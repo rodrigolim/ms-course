@@ -1,0 +1,17 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: hr-worker
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: ${DATABASE_PASSWORD} 
+    url: jdbc:postgresql://localhost:5432/hr-worker
+    username: ${DATABASE_USERNAME} 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true

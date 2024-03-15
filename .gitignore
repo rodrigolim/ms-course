@@ -1,0 +1,14 @@
+/dist/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+### Eclipse ###
+.metadata
+
+### Mac ###
+.DS_Store
