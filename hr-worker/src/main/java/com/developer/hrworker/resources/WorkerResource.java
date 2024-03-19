@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import com.developer.hrworker.entities.Worker;
 import com.developer.hrworker.exception.ResourceNotFoundException;
 import com.developer.hrworker.repositories.WorkerRepository;
 
+@RefreshScope
 @RestController
 @RequestMapping("/api/workers")
 public class WorkerResource {

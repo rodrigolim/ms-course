@@ -16,10 +16,14 @@ spring:
           enabled: true
       routes:
         - id: hr-worker
-          uri: lb://hr-worker # hr-worker é o nome do serviço registrado no Eureka
+          uri: lb://hr-worker
           predicates:
             - Path=/api/workers/**
         - id: hr-payroll
           uri: lb://hr-payroll
           predicates:
             - Path=/api/payments/**
+        - id: hr-worker-actuator
+          uri: lb://hr-worker/actuator
+          predicates:
+            - Path=/actuator/**
