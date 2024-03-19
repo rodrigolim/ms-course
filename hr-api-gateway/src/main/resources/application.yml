@@ -27,3 +27,7 @@ spring:
           uri: lb://hr-worker/actuator
           predicates:
             - Path=/actuator/**
+        - id: hr-user
+          uri: lb://hr-user
+          predicates:
+            - Path=/api/users/**
