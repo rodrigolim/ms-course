@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
 @SpringBootApplication
-public class HrPayrollApplication {
+public class StartHrPayrollApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HrPayrollApplication.class, args);
+		SpringApplication.run(StartHrPayrollApplication.class, args);
 	}
 
 }

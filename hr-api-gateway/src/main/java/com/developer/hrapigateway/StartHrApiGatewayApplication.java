@@ -2,14 +2,13 @@ package com.developer.hrapigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 @SpringBootApplication
-public class HrApiGatewayApplication {
+public class StartHrApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HrApiGatewayApplication.class, args);
+		SpringApplication.run(StartHrApiGatewayApplication.class, args);
 	}
 
 }
