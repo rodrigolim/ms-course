@@ -10,3 +10,6 @@ spring:
         git:
           default-label: main
           uri: https://github.com/rodrigolim/ms-course-configs
+          username: ${GIT_USER}
+          password: ${GIT_PASS}
+          fail-fast: true
