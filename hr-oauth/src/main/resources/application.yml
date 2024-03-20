@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: hr-oauth
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
 
 eureka:
   server:

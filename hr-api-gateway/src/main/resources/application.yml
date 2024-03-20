@@ -15,6 +15,10 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: hr-oauth
+          uri: lb://hr-oauth
+          predicates:
+              - Path=/api/oauth/**
         - id: hr-worker
           uri: lb://hr-worker
           predicates:
@@ -31,3 +35,4 @@ spring:
           uri: lb://hr-user
           predicates:
             - Path=/api/users/**
+
