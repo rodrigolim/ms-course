@@ -8,6 +8,7 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
 
+
 eureka:
   server:
     wait-time-in-ms-when-sync-empty: 0
