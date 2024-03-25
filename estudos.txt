@@ -1,0 +1,15 @@
+https://www.youtube.com/watch?v=alv0YgPDdOQ
+https://github.com/algaworks/conteudos-microsservicos/tree/main/Seguran%C3%A7a/Utilizando%20o%20Spring%20Authorization%20Server%20-%20Final
+
+
+https://www.youtube.com/watch?v=hgLKOPHfuis&t=3038s
+https://github.com/giuliana-bezerra/tutorial-spring-auth-server
+
+
+
+https://www.youtube.com/watch?v=5w-YCcOjPD0
+https://github.com/Fernanda-Kipper/auth-api
+
+
+
+https://jwt.io/

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/oauth")
+@RequestMapping(value = "/auth")
 public class UserResource {
 
     @Autowired
@@ -26,4 +26,9 @@ public class UserResource {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+    @GetMapping("/public")
+    String publicRoute() {
+        return "<h1>Public route, feel free to look around! 🔓 </h1>";
+    }
+
 }

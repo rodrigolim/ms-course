@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-public class AppConfig {
+public class PasswordEncoderConfig {
 
     //https://www.youtube.com/watch?v=alv0YgPDdOQ
     @Bean

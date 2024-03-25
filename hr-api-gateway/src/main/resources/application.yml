@@ -18,7 +18,7 @@ spring:
         - id: hr-oauth
           uri: lb://hr-oauth
           predicates:
-              - Path=/api/oauth/**
+            - Path=/auth/**, /oauth2/**
         - id: hr-worker
           uri: lb://hr-worker
           predicates:
@@ -36,3 +36,8 @@ spring:
           predicates:
             - Path=/api/users/**
 
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
