@@ -22,19 +22,15 @@ spring:
         - id: hr-worker
           uri: lb://hr-worker
           predicates:
-            - Path=/api/workers/**
+            - Path=/hr-worker/**
         - id: hr-payroll
           uri: lb://hr-payroll
           predicates:
-            - Path=/api/payments/**
-        - id: hr-worker-actuator
-          uri: lb://hr-worker/actuator
-          predicates:
-            - Path=/actuator/**
+            - Path=/hr-payroll/**
         - id: hr-user
           uri: lb://hr-user
           predicates:
-            - Path=/api/users/**
+            - Path=/hr-user/**
 
 logging:
   level:

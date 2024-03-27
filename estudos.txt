@@ -2,6 +2,9 @@ https://www.youtube.com/watch?v=alv0YgPDdOQ
 https://github.com/algaworks/conteudos-microsservicos/tree/main/Seguran%C3%A7a/Utilizando%20o%20Spring%20Authorization%20Server%20-%20Final
 
 
+https://www.baeldung.com/spring-cloud-gateway-oauth2
+https://github.com/Baeldung/spring-security-oauth
+
 https://www.youtube.com/watch?v=hgLKOPHfuis&t=3038s
 https://github.com/giuliana-bezerra/tutorial-spring-auth-server
 

@@ -17,6 +17,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityFilterConfig {
 
+    private static final String[] PUBLIC = {"/auth/public", "/auth/search"};
+
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception {
@@ -28,15 +30,8 @@ public class SecurityFilterConfig {
     @Bean
     public SecurityFilterChain authorizationFilterChain(HttpSecurity http) throws Exception {
 
-/*
-        http.authorizeHttpRequests(authorize -> authorize
-                .anyRequest().authenticated());
-        return http.formLogin(Customizer.withDefaults()).build();
-*/
-
         http.authorizeHttpRequests(authorizeConfig -> {
-                    authorizeConfig.requestMatchers("/auth/public").permitAll();
-                    authorizeConfig.requestMatchers("/auth/search").permitAll();
+                    authorizeConfig.requestMatchers(PUBLIC).permitAll();
                     authorizeConfig.anyRequest().authenticated();
                 })
                 .formLogin(withDefaults())

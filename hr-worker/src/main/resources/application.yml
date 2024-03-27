@@ -1,5 +1,7 @@
 server:
   port: ${PORT:0}
+  servlet:
+    context-path: /hr-worker
 
 spring:
   profiles:
@@ -36,4 +38,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*" # Inclui todos os endpoints
+        include: health,refresh # Habilitar apenas os endpoints desejados
