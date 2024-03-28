@@ -4,14 +4,18 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.developer.hroauth.services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 
 import com.nimbusds.jose.jwk.JWKSet;
@@ -60,9 +64,16 @@ public class TokenStoreConfig {
 
 
     @Bean
-    public OAuth2TokenCustomizer<JwtEncodingContext> jwtEncodingContextOAuth2TokenCustomizer(UserService userService){
+    public OAuth2TokenCustomizer<JwtEncodingContext> tokenCustomizer(UserService userService){
         return (context -> {
             Authentication authentication = context.getPrincipal();
+
+            if (OAuth2TokenType.ACCESS_TOKEN.equals(context.getTokenType())) {
+                Set<String> authorities = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toSet());
+                context.getClaims().claim("authorities", authorities);
+            }
+
             if (authentication.getPrincipal() instanceof User) {
                 final User user = (User) authentication.getPrincipal();
 

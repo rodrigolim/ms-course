@@ -7,6 +7,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,6 +33,7 @@ public class SecurityFilterConfig {
 
         http.authorizeHttpRequests(authorizeConfig -> {
                     authorizeConfig.requestMatchers(PUBLIC).permitAll();
+                    authorizeConfig.requestMatchers("/error").permitAll();
                     authorizeConfig.anyRequest().authenticated();
                 })
                 .formLogin(withDefaults())
@@ -40,6 +42,14 @@ public class SecurityFilterConfig {
                 });
 
         return http.build();
+    }
+
+
+    @Bean
+    WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.debug(false)
+                .ignoring()
+                .requestMatchers("/webjars/**", "/images/**", "/css/**", "/assets/**", "/favicon.ico");
     }
 
 

@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,10 +19,9 @@ import org.springframework.security.oauth2.server.authorization.settings.TokenSe
 
 @Configuration
 public class ClientStoreConfig {
-    /*
-     * Clientes conhecidos pelo AS, exemplo de implementação em memória, mas poderia
-     * ser via banco.
-     */
+
+    @Value("${aw.auth.providerUri}")
+    private String awAuthProviderUri;
 
     @Bean
     public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
@@ -49,7 +49,7 @@ public class ClientStoreConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:3000/authorized")
+                .redirectUri(awAuthProviderUri+"/authorized")
                 .redirectUri("https://oidcdebugger.com/debug")
                 .redirectUri("https://oauth.pstmn.io/v1/callback")
                 .scope("myuser:read")
@@ -72,7 +72,7 @@ public class ClientStoreConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/client-server-oidc")
+                .redirectUri(awAuthProviderUri+"/login/oauth2/code/client-server-oidc")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .clientSettings(ClientSettings.builder()

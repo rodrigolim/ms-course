@@ -1,5 +1,7 @@
 server:
   port: ${PORT:0}
+  servlet:
+    context-path: /hr-oauth
 
 logging:
   level:
@@ -28,3 +30,10 @@ eureka:
 aw:
   auth:
     providerUri: "http://localhost:8765"  #http://endereco-do-seu-api-gateway
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Habilitar todos endpoints
+

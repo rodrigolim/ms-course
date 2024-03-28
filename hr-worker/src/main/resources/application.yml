@@ -39,3 +39,12 @@ management:
     web:
       exposure:
         include: health,refresh # Habilitar apenas os endpoints desejados
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
+        cloud:
+          config:
+            client: DEBUG
