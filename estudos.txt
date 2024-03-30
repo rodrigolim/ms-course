@@ -14,5 +14,14 @@ https://www.youtube.com/watch?v=5w-YCcOjPD0
 https://github.com/Fernanda-Kipper/auth-api
 
 
+https://www.youtube.com/watch?v=rMX1OyqgFKs
+https://github.com/wdkeyser02/SpringBoot3.1.0-SpringAuthorizationSever1.1.0/tree/part05
+
+
 
 https://jwt.io/
+
+
+0 0 1 * * ? *
+
+0 42 11 * * ? *

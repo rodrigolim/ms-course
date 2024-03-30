@@ -9,7 +9,8 @@ spring:
   config:
     import: configserver:http://localhost:8888
   application:
-    name: hr-worker
+    name: hr-worker # Nome do aplicativo
+    version: 1.0.0 # Versão do aplicativo
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${DATABASE_PASSWORD} 

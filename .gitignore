@@ -3,6 +3,7 @@
 /nbdist/
 /.nb-gradle/
 build/
+/storage/
 
 ### VS Code ###
 .vscode/

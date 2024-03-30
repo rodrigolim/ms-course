@@ -8,7 +8,8 @@ eureka:
 
 spring:
   application:
-    name: hr-api-gateway
+    name: hr-api-gateway # Nome do aplicativo
+    version: 1.0.0 # Versão do aplicativo
   cloud:
     gateway:
       discovery:

@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,10 +44,23 @@ public class WorkerResource {
 	}
 
 	@GetMapping
+	public ResponseEntity<List<Worker>> findFilter( Worker filtro ){
+		ExampleMatcher matcher = ExampleMatcher
+				.matching()
+				.withIgnoreCase()
+				.withStringMatcher(
+						ExampleMatcher.StringMatcher.CONTAINING );
+
+		Example example = Example.of(filtro, matcher);
+		List<Worker> workers = workerRepository.findAll(example);
+		return ResponseEntity.ok().body(workers);
+	}
+
+/*	@GetMapping
 	public ResponseEntity<List<Worker>> findAllWorkers() {
 		List<Worker> workers = workerRepository.findAll();
 		return ResponseEntity.ok().body(workers);
-	}
+	}*/
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Worker> findWorkerById(@PathVariable Long id) {
