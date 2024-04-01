@@ -3,6 +3,11 @@ server:
   servlet:
     context-path: /hr-worker
 
+keycloak:
+  realm: ms-course
+  auth-server-url: http://localhost:8081
+
+
 spring:
   profiles:
     active: test
@@ -11,11 +16,26 @@ spring:
   application:
     name: hr-worker # Nome do aplicativo
     version: 1.0.0 # Versão do aplicativo
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: admin-rest-client
+            client-secret: 7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}
+          jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: ${DATABASE_PASSWORD} 
+    password: ${DATABASE_PASSWORD}
     url: jdbc:postgresql://localhost:5432/hr-worker
-    username: ${DATABASE_USERNAME} 
+    username: ${DATABASE_USERNAME}
   jpa:
     hibernate:
       ddl-auto: update
@@ -45,7 +65,4 @@ logging:
   level:
     org:
       springframework:
-        security: trace
-        cloud:
-          config:
-            client: DEBUG
+        security: DEBUG

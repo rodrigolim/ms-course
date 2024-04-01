@@ -20,6 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Lombok](https://projectlombok.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Keycloak](https://www.keycloak.org/)
+- [Actuator](https://www.keycloak.org/)
 
 
 ## - Projeto
@@ -29,3 +30,5 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 
 keycloak Acesse `http://localhost:8443`
+
+Swegger Acesse `http://localhost:8765/hr-worker/swagger-ui/index.html`

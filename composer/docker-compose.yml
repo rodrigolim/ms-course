@@ -1,0 +1,67 @@
+version: '3.8'
+
+x-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.2
+    restart: always
+    ports:
+      - 8081:8080
+      - 8443:8443
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_METRICS_ENABLED=true
+      - KC_HEALTH_ENABLED=true
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=postgres_svr
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_PORT=5423
+      - KC_DB_PASSWORD=postgres
+      - KC_DB_USERNAME=postgres
+      - KC_DB_SCHEMA=public
+      - KC_LOG_LEVEL=WARN
+    depends_on:      
+      postgres_svr:
+        condition: service_healthy
+    networks:
+      network_sso:
+        ipv4_address: "10.0.0.2"  
+    command:
+      - start-dev
+    volumes:
+      - ../storage/keycloak:/opt/keycloak/data/import
+    logging: *logging
+
+  postgres_svr: 
+    image: postgres:15.5-alpine3.19 
+    restart: always
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - "5423:5432"
+    volumes:
+        - ../storage/postgresql:/var/lib/postgresql/data
+    command: ["postgres", "-c", "log_statement=all", "-c", "listen_addresses=*", "-c", "max_connections=300"]
+    networks:
+      network_sso:
+        ipv4_address: "10.0.0.3"
+
+networks:  
+  network_sso:
+    ipam:
+      driver: default
+      # default = bridge
+      config:
+        - subnet: "10.0.0.0/24"   
+
+
