@@ -54,6 +54,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance-id:${random.value}}
+    statusPageUrlPath: /hr-worker/actuator/health
 
 management:
   endpoints:
@@ -66,3 +67,9 @@ logging:
     org:
       springframework:
         security: DEBUG
+
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: admin-rest-client
+      client-secret: 7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5

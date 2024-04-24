@@ -27,8 +27,18 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 
 ## - Como executar
+ 1ª hr-eureka-server
+ 2º hr-config-server
+ 3º hr-api-gateway
+ 4º os demais microserviços sem ordem definida
 
 
-keycloak Acesse `http://localhost:8443`
 
-Swegger Acesse `http://localhost:8765/hr-worker/swagger-ui/index.html`
+## - keycloak server
+keycloak Acesse `http://localhost:8081`
+
+
+## - Swegger 
+Microserviço hr-user `http://localhost:8765/hr-user/swagger-ui/index.html`
+Microserviço hr-worker `http://localhost:8765/hr-worker/swagger-ui/index.html`
+Microserviço hr-payroll `http://localhost:8765/hr-payroll/swagger-ui/index.html`

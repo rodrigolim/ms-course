@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import com.developer.hrworker.entities.Worker;
@@ -102,15 +101,6 @@ public class WorkerResource {
 		return String.format("""
 				<h1>Private route, only authorized personal! 🔐  </h1>
 				""");
-	}
-
-	@GetMapping("/jwt")
-	String jwt(@AuthenticationPrincipal Jwt jwt) {
-		return String.format("""
-				Principal: %s\n
-				Email attribute: %s\n
-				JWT: %s\n
-				""", jwt.getClaims(), jwt.getClaim("email"), jwt.getTokenValue());
 	}
 
 }

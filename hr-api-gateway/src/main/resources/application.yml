@@ -22,6 +22,7 @@ eureka:
 spring:
   main:
     allow-bean-definition-overriding: true
+    web-application-type: reactive
   application:
     name: hr-api-gateway # Nome do aplicativo
     version: 1.0.0 # Versão do aplicativo
@@ -65,6 +66,4 @@ spring:
           uri: lb://hr-oauth
           predicates:
             - Path=/hr-oauth/**
-
-
 

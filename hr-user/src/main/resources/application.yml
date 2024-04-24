@@ -19,6 +19,16 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
+openapi:
+  service:
+    title: User Microservice doc
+    version: 1.0.0
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
 eureka:
   server:
     wait-time-in-ms-when-sync-empty: 0
@@ -29,9 +39,12 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance-id:${random.value}}
+    statusPageUrlPath: /hr-user/actuator/health
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,refresh # Habilitar apenas os endpoints desejados
+        include: info,health,refresh # Habilitar apenas os endpoints desejados
+
+
