@@ -1,5 +1,8 @@
 server:
   port: 8765
+  servlet:
+    context-path: /
+
 
 logging:
   level:
@@ -66,4 +69,23 @@ spring:
           uri: lb://hr-oauth
           predicates:
             - Path=/hr-oauth/**
+
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      #      this config is for api-gateway swagger-ui
+      - url: /v3/api-docs
+        name: API Gateway Service
+      - url: /hr-user/v3/api-docs
+        name: User Service
+      - url: /hr-worker/v3/api-docs
+        name: Worker Service
+      - url: /hr-payroll/v3/api-docs
+        name: Payroll Service
 

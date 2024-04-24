@@ -39,6 +39,4 @@ keycloak Acesse `http://localhost:8081`
 
 
 ## - Swegger 
-Microserviço hr-user `http://localhost:8765/hr-user/swagger-ui/index.html`
-Microserviço hr-worker `http://localhost:8765/hr-worker/swagger-ui/index.html`
-Microserviço hr-payroll `http://localhost:8765/hr-payroll/swagger-ui/index.html`
+http://localhost:8765/swagger-ui.html

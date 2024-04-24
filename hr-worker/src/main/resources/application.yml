@@ -68,8 +68,16 @@ logging:
       springframework:
         security: DEBUG
 
+openapi:
+  service:
+    title: Worker Microservice doc
+    version: 1.0.0
+    url: http://localhost:8765/hr-worker #api gateway url
 springdoc:
+  api-docs:
+    path: /v3/api-docs
   swagger-ui:
+    path: /swagger-ui.html
     oauth:
       client-id: admin-rest-client
       client-secret: 7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5

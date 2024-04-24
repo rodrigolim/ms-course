@@ -6,6 +6,7 @@ server:
 spring:
   application:
     name: hr-payroll
+    version: 1.0.0 # Versão do aplicativo
 eureka:
   server:
     wait-time-in-ms-when-sync-empty: 0
@@ -24,3 +25,13 @@ management:
       exposure:
         include: health,refresh # Habilitar apenas os endpoints desejados
 
+openapi:
+  service:
+    title: Payroll Microservice doc
+    version: 1.0.0
+    url: http://localhost:8765/hr-payroll #api gateway url
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

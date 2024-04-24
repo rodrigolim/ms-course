@@ -3,7 +3,6 @@ package com.developer.hrapigateway.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -18,8 +17,9 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
+            "/webjars/**", "/swagger-ui.html", "/v3/**",
             "/auth/public", "/auth/search",
-            "/eureka/**",
+            "/hr-payroll/actuator/**", "/hr-payroll/v3/**", "/hr-payroll/swagger-ui/**",
             "/hr-user/actuator/**", "/hr-user/v3/**", "/hr-user/swagger-ui/**",
             "/hr-worker/actuator/**", "/hr-worker/v3/**", "hr-worker/swagger-ui/**"};
 

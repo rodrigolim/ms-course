@@ -6,6 +6,7 @@ server:
 spring:
   application:
     name: hr-user
+    version: 1.0.0 # Versão do aplicativo
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${DATABASE_PASSWORD}
@@ -18,16 +19,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
-
-openapi:
-  service:
-    title: User Microservice doc
-    version: 1.0.0
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
 
 eureka:
   server:
@@ -46,5 +37,16 @@ management:
     web:
       exposure:
         include: info,health,refresh # Habilitar apenas os endpoints desejados
+
+openapi:
+  service:
+    title: User Microservice doc
+    version: 1.0.0
+    url: http://localhost:8765/hr-user #api gateway url
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 
 

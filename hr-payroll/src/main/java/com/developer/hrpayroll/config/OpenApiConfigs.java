@@ -1,31 +1,22 @@
-package com.developer.hrworker.config;
+package com.developer.hrpayroll.config;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springdoc.core.models.GroupedOpenApi;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 
-import javax.swing.*;
+import java.util.List;
 
+@OpenAPIDefinition
 @Configuration
-public class SwaggerConfig {
-
-    @Autowired
-    private Environment env;
-
-    private String getApplicationName() {
-        return env.getProperty("spring.application.name");
-    }
-
-    private String getApplicationVersion() {
-        return env.getProperty("spring.application.version");
-    }
+public class OpenApiConfigs {
 
     @Bean
     GroupedOpenApi publicApi() {
@@ -36,9 +27,13 @@ public class SwaggerConfig {
     }
 
     @Bean
-    OpenAPI customOpenAPI() {
+    public OpenAPI customOpenAPI(
+            @Value("${openapi.service.title}") String serviceTitle,
+            @Value("${openapi.service.version}") String serviceVersion,
+            @Value("${openapi.service.url}") String url) {
         return new OpenAPI()
-                .info(new Info().title(getApplicationName()).version(getApplicationVersion()))
+                .servers(List.of(new Server().url(url)))
+                .info(new Info().title(serviceTitle).version(serviceVersion))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(
                         new Components()
