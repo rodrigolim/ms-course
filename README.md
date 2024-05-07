@@ -3,17 +3,17 @@
 </h1>
 
 <p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-ordem-de-execucao">Ordem de execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;
-  <a href="#-keycloak-server">Keycloak Server</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#ordem-de-execução">Ordem de execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#keycloak-server">Keycloak Server</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#swagger">Swagger</a>&nbsp;&nbsp;&nbsp;|&nbsp;
 </p>
 
 
 # Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
-
 - [Spring Authorization Server](https://spring.io/projects/spring-authorization-server)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Spring Security](https://spring.io/projects/spring-security)
