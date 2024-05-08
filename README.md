@@ -21,7 +21,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Lombok](https://projectlombok.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Keycloak](https://www.keycloak.org/)
-- [Actuator](https://www.keycloak.org/)
+- [Swagger](https://swagger.io/)
 
 
 ## Projeto
@@ -32,44 +32,38 @@ Ao longo deste projeto, serão utilizadas diversas ferramentas amplamente reconhe
 
 
   ```mermaid
-  flowchart LR       
-
-    client[client]:::start --> gateway    
-
-    classDef start fill:#f96
-
-    eureka(Eureka server) <--> gateway
-
-    gateway --> keycloak(keycloak server)
-
-    
-    subgraph gateway
-        direction RL            
-
-            payroll[1 - payroll ms
+flowchart LR
+ subgraph gateway["api-gateway"]
+    direction RL
+        payroll["1 - payroll ms
                     2 - payroll ms
                     3 - payroll ms
-                    ... ]                    
-                    
-            worker[1 - worker ms
+                    ..."]
+        worker["1 - worker ms
                    2 - worker ms
                    3 - worker ms
-                    ...] 
-            
-            user[1 - user ms
+                    ..."]
+        user["1 - user ms
               2 - user ms
               3 - user ms
-              ...]                  
-                      
-    end      
-    
-
-    subgraph postgressql
-        user --> id1[(database-user)] 
-       worker --> id2[(database-worker)]        
-    end     
-          
-    gateway --> config(config server) --> git[git repository]  
+              ..."]
+  end
+ subgraph postgressql["postgressql"]
+        id1[("database-user")]
+        id2[("database-worker")]
+        id3[("database-keycloak")]
+  end
+    client(["client"]) --> gateway
+    eureka("Eureka server") <--> gateway
+    gateway --> keycloak("keycloak server") & config("config server")
+    keycloak --> id3
+    user --> id1
+    worker --> id2
+    config --> git{{"git repository"}}
+    style client color:#000000,fill:#FFD600
+    style eureka fill:#00C853,color:#000000
+    style keycloak fill:#00C853,color:#000000
+    style git fill:#FFE0B2,color:#000000
 
 
 
