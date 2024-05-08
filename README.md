@@ -30,7 +30,6 @@ Este projeto tem como objetivo aprofundar o estudo da arquitetura de microserviç
 
 Ao longo deste projeto, serão utilizadas diversas ferramentas amplamente reconhecidas e empregadas em âmbito corporativo. Essas ferramentas são selecionadas com base em sua relevância e aplicabilidade em ambientes de produção de grande escala, contribuindo para uma compreensão abrangente e prática da arquitetura de microserviços.
 
-![Projeto](docs/ms-course.png)
 
   ```mermaid
   flowchart LR       
@@ -71,6 +70,10 @@ Ao longo deste projeto, serão utilizadas diversas ferramentas amplamente reconhe
     end     
           
     gateway --> config(config server) --> git[git repository]  
+
+
+
+
    ```  
 
 
