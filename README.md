@@ -1,10 +1,16 @@
 
-<h1 align="center">
-  <a>Arquitetura de Microserviços</a>
-</h1>
+<div align="center">
+  <a>
+    <img src="imagens/logo.png" alt="Logo" width="80" height="80">
+  </a>
+  <h1>Arquitetura de Microserviços</h1>
+</div>
+
+
 
 <p align="center">
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#pré-requisitos">Pré-requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#ordem-de-execução">Ordem de execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   <a href="#eureka">Eureka</a>&nbsp;&nbsp;&nbsp;|&nbsp;
@@ -23,9 +29,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [PostgreSQL](https://www.postgresql.org/)
 - [Keycloak](https://www.keycloak.org/)
 - [Swagger](https://swagger.io/)
+- [Flyway](https://flywaydb.org/)
 
 
-## Projeto
+# Pré-requisitos
+- Java 17+
+- Docker
+
+# Projeto
 
 Este projeto tem como objetivo aprofundar o estudo da arquitetura de microserviços, explorando a implementação de uma infraestrutura robusta e escalável. Compreender os princípios e práticas dessa abordagem arquitetônica é fundamental para o desenvolvimento de sistemas distribuídos e resilientes, essenciais para empresas que buscam adaptabilidade e agilidade no cenário atual de desenvolvimento de software.
 
@@ -72,9 +83,24 @@ flowchart LR
    ```  
    _Modelado via [mermaidchart](https://www.mermaidchart.com/app/dashboard)_ 
    
+## Configurando Variáveis de Ambiente   
+### 1. __hr-config-server__
+```sh
+  GIT_PASS = {token gerado pelo github}
+  GIT_USER = {usuário github}
+```
+### 2. __hr-user__  
+```sh
+  DATABASE_USERNAME = {usuário database}
+  DATABASE_PASSWORD = {senha database}
+```
+### 3. __hr-worker__  
+```sh
+  DATABASE_USERNAME = {usuário database}
+  DATABASE_PASSWORD = {senha database}
+```
 
-
-## Ordem de execução
+# Ordem de execução
 <ol>
   <li>hr-eureka-server</li>
   <li>hr-config-server</li>
@@ -89,7 +115,7 @@ flowchart LR
   </li>
 </ol>
 
-## Eureka
+# Eureka
 
 O Eureka Server é uma ferramenta de código aberto desenvolvida pela Netflix e utilizada para implementar a descoberta de serviços em uma arquitetura de microserviços. Ele atua como um registro centralizado onde os microserviços podem se registrar e descobrir uns aos outros dinamicamente, facilitando a comunicação entre eles.
 
@@ -109,7 +135,7 @@ _Acessando o eureka server:_
 http://localhost:8761
 ```
 
-## Keycloak
+# Keycloak
 
 O Keycloak Server é uma solução de código aberto para gerenciamento de identidade e acesso, oferecendo recursos robustos de autenticação, autorização e gerenciamento de usuários. Desenvolvido pela Red Hat, o Keycloak simplifica a  implementação de autenticação e autorização em aplicativos web e serviços RESTful.
 
@@ -132,7 +158,7 @@ http://localhost:8081
 ```
 
 
-## Swagger 
+# Swagger 
 
 O Swagger é uma poderosa ferramenta de código aberto para documentação de APIs, projetada para simplificar e automatizar o processo de documentação de serviços da web RESTful. Ele permite que desenvolvedores criem, visualizem e interajam com a documentação da API de forma eficiente, melhorando a compreensão e adoção das APIs por parte dos desenvolvedores consumidores.
 
