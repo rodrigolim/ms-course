@@ -33,11 +33,44 @@ Ao longo deste projeto, serão utilizadas diversas ferramentas amplamente reconhe
 ![Projeto](docs/ms-course.png)
 
   ```mermaid
-     graph TD;
-         A-->B;
-         A-->C;
-         B-->D;
-         C-->D;
+  flowchart LR       
+
+    client[client]:::start --> gateway    
+
+    classDef start fill:#f96
+
+    eureka(Eureka server) <--> gateway
+
+    gateway --> keycloak(keycloak server)
+
+    
+    subgraph gateway
+        direction RL            
+
+            payroll[1 - payroll ms
+                    2 - payroll ms
+                    3 - payroll ms
+                    ... ]                    
+                    
+            worker[1 - worker ms
+                   2 - worker ms
+                   3 - worker ms
+                    ...] 
+            
+            user[1 - user ms
+              2 - user ms
+              3 - user ms
+              ...]                  
+                      
+    end      
+    
+
+    subgraph postgressql
+        user --> id1[(database-user)] 
+       worker --> id2[(database-worker)]        
+    end     
+          
+    gateway --> config(config server) --> git[git repository]  
    ```  
 
 
