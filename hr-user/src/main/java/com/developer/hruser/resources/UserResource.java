@@ -3,6 +3,7 @@ package com.developer.hruser.resources;
 import com.developer.hruser.entities.User;
 import com.developer.hruser.exception.ResourceNotFoundException;
 import com.developer.hruser.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:8765")
@@ -38,6 +40,9 @@ public class UserResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable Long id) {
+
+        log.info("### Accessing {}", id);
+
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
         return ResponseEntity.ok().body(user);

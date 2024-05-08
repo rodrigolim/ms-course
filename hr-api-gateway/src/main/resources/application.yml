@@ -47,24 +47,22 @@ spring:
               scope: openid
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-      default-filters:
-        - TokenRelay
       routes:
         - id: hr-worker
           uri: lb://hr-worker
           predicates:
             - Path=/hr-worker/**
+
         - id: hr-payroll
           uri: lb://hr-payroll
           predicates:
             - Path=/hr-payroll/**
+
         - id: hr-user
           uri: lb://hr-user
           predicates:
             - Path=/hr-user/**
+
         - id: hr-oauth
           uri: lb://hr-oauth
           predicates:

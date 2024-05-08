@@ -6,7 +6,8 @@
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#ordem-de-execução">Ordem de execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;
-  <a href="#keycloak-server">Keycloak Server</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#eureka">Eureka</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#keycloak">Keycloak</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   <a href="#swagger">Swagger</a>&nbsp;&nbsp;&nbsp;|&nbsp;
 </p>
 
@@ -31,16 +32,51 @@ Ao longo deste projeto, serão utilizadas diversas ferramentas amplamente reconhe
 
 ![Projeto](docs/ms-course.png)
 
+  ```mermaid
+     graph TD;
+         A-->B;
+         A-->C;
+         B-->D;
+         C-->D;
+   ```  
+
+
 ## Ordem de execução
 <ol>
   <li>hr-eureka-server</li>
   <li>hr-config-server</li>
   <li>hr-api-gateway</li>
-  <li>Os demais microserviços sem ordem definida</li>
+  <li>Os demais microserviços sem ordem definida.
+        Sugestão:
+      <ul>
+        <li>hr-user</li>
+        <li>hr-worker</li>
+        <li>hr-payroll</li>
+    </ul>
+  </li>
 </ol>
 
+## Eureka
 
-## Keycloak Server
+O Eureka Server é uma ferramenta de código aberto desenvolvida pela Netflix e utilizada para implementar a descoberta de serviços em uma arquitetura de microserviços. Ele atua como um registro centralizado onde os microserviços podem se registrar e descobrir uns aos outros dinamicamente, facilitando a comunicação entre eles.
+
+Principais características do Eureka Server:
+
+* __Descoberta de Serviços:__ Oferece um mecanismo simples e eficaz para os microserviços se registrarem e descobrirem uns aos outros em um ambiente distribuído.
+* __Balanceamento de Carga:__ Facilita a implementação de balanceamento de carga entre instâncias de serviços registradas no Eureka Server, permitindo distribuir o tráfego de forma equilibrada entre elas.
+* __Monitoramento de Estado:__ Fornece recursos para monitorar o estado de saúde dos serviços registrados, permitindo a detecção e remoção automática de instâncias com falha.
+* __Alta Disponibilidade:__ Projetado para ser altamente disponível e resiliente, com suporte para clusters e replicação de dados para evitar pontos únicos de falha.
+* __Integração com Spring Cloud:__ Totalmente integrado com o ecossistema Spring Cloud, facilitando sua utilização em aplicativos desenvolvidos com Spring Boot.
+* __Auto-regeneração:__ Capaz de auto-regenerar instâncias perdidas ou temporariamente inacessíveis, garantindo a integridade e disponibilidade contínua do registro de serviços.
+
+Em resumo, o Eureka Server desempenha um papel fundamental na arquitetura de microserviços, fornecendo um mecanismo confiável e eficiente para a descoberta de serviços e comunicação entre eles, contribuindo para a construção de sistemas distribuídos escaláveis e resilientes.
+
+_Acessando o eureka server:_
+```
+http://localhost:8761
+```
+
+## Keycloak
 
 O Keycloak Server é uma solução de código aberto para gerenciamento de identidade e acesso, oferecendo recursos robustos de autenticação, autorização e gerenciamento de usuários. Desenvolvido pela Red Hat, o Keycloak simplifica a  implementação de autenticação e autorização em aplicativos web e serviços RESTful.
 

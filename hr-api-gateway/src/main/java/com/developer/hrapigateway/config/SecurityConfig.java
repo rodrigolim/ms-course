@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
@@ -17,6 +15,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {
+            "/eureka/**",
             "/webjars/**", "/swagger-ui.html", "/v3/**",
             "/auth/public", "/auth/search",
             "/hr-payroll/actuator/**", "/hr-payroll/v3/**", "/hr-payroll/swagger-ui/**",
@@ -32,7 +31,7 @@ public class SecurityConfig {
                         .pathMatchers(AUTH_WHITELIST).permitAll()
                         .anyExchange().authenticated()
                 )
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()))
+                .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource));
 
