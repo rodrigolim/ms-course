@@ -25,3 +25,8 @@ https://jwt.io/
 0 0 1 * * ? *
 
 0 42 11 * * ? *
+
+
+
+https://medium.com/@wahyubagus1910/securing-spring-boot-with-keycloak-b352f05575f2
+https://www.atlantbh.com/securing-spring-boot-applications-with-keycloak-and-spring-security/
