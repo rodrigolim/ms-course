@@ -31,18 +31,17 @@ public class OpenApiConfigs {
             @Value("${openapi.service.title}") String serviceTitle,
             @Value("${openapi.service.version}") String serviceVersion,
             @Value("${openapi.service.url}") String url) {
+
+        SecurityScheme securityScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT");
+
         return new OpenAPI()
                 .servers(List.of(new Server().url(url)))
                 .info(new Info().title(serviceTitle).version(serviceVersion))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                .components(
-                        new Components()
-                                .addSecuritySchemes("bearerAuth", new SecurityScheme()
-                                        .type(SecurityScheme.Type.HTTP)
-                                        .scheme("bearer")
-                                        .bearerFormat("JWT")
-                                )
-                );
+                .components(new Components().addSecuritySchemes("bearerAuth", securityScheme));
     }
 
 }
