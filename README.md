@@ -88,6 +88,7 @@ flowchart LR
 ```sh
   GIT_PASS = {token gerado pelo github}
   GIT_USER = {usuário github}
+  GIT_REPOSITORY = = {repositório github que ira armazenar as configurações}
 ```
 ### 2. __hr-user__  
 ```sh
