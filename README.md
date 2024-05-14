@@ -155,7 +155,7 @@ Em resumo, o Keycloak Server é uma solução poderosa e altamente configurável par
 
 _Acessando o keycloak server:_
 ```
-http://localhost:8081
+http://localhost:9090
 ```
 
 
