@@ -22,7 +22,7 @@ https://github.com/wdkeyser02/SpringBoot3.1.0-SpringAuthorizationSever1.1.0/tree
 https://jwt.io/
 
 
-0 0 1 * * ? *
+0 0/1 * * * ?
 
 0 42 11 * * ? *
 

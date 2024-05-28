@@ -3,8 +3,9 @@ server:
   servlet:
     context-path: /
 
-
 logging:
+  file:
+    name: ./logs/log-file.log
   level:
     root: INFO
     org:
@@ -15,12 +16,15 @@ logging:
               RouterDefinitionLocator: INFO
         security: trace
 
+issuer: http://localhost:9090/realms/ms-course
+client-id: admin-rest-client
+client-secret: 7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5
+client-uri: http://localhost:9090
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-
-
 
 spring:
   main:
@@ -31,20 +35,20 @@ spring:
     version: 1.0.0 # Versão do aplicativo
   security:
     oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${issuer}
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            client-id: ${client-id}
+            client-secret: ${client-secret}
+            scope: openid
       resourceserver:
         jwt:
-          jwk-set-uri: https://localhost:8443/realms/ms-course/protocol/openid-connect/certs
-        client:
-          provider:
-            keycloak:
-              issuer-uri: https://localhost:8443/realms/ms-course
-          registration:
-            spring-with-test-scope:
-              provider: keycloak
-              client-id: admin-rest-client
-              client-secret: NFOpCliOcgXnqRfZ68zheEIIJ2YcTtWc
-              authorization-grant-type: client_credentials
-              scope: openid
+          issuer-uri: ${issuer}
+          jwk-set-uri: ${issuer}/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
@@ -62,11 +66,6 @@ spring:
           uri: lb://hr-user
           predicates:
             - Path=/hr-user/**
-
-        - id: hr-oauth
-          uri: lb://hr-oauth
-          predicates:
-            - Path=/hr-oauth/**
 
 springdoc:
   enable-native-support: true
