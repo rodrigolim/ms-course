@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "299f32f2-edaa-4de8-a5c9-6554daedf098",
+		"name": "ms-course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19408522",
+		"_collection_link": "https://bold-meadow-584096.postman.co/workspace/New-Team-Workspace~2ac8bb7d-ab30-41de-a31a-6f26fdc2993f/collection/19408522-299f32f2-edaa-4de8-a5c9-6554daedf098?action=share&source=collection_link&creator=19408522"
+	},
+	"item": [
+		{
+			"name": "hr-worker",
+			"item": [
+				{
+					"name": "workers",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "headerPrefix",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "tokenName",
+									"value": "spring-security-keycloak",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "body",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "5FxolWQnR2MckXSXtFpG7Y6RON821uFB",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "spring-security-keycloak",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://localhost:8443/realms/ms-course/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://localhost:8765/oauth2/authorize",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8765/hr-worker/api/workers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-worker",
+								"api",
+								"workers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "A",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hr-payroll",
+			"item": [
+				{
+					"name": "payments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Alex\",\n    \"dailyIncome\": 250.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/hr-payroll/api/payments/1/days/30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-payroll",
+								"api",
+								"payments",
+								"1",
+								"days",
+								"30"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hr-config-server",
+			"item": [
+				{
+					"name": "Configs default profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/hr-worker/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"hr-worker",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configs test profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/hr-worker/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"hr-worker",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show worker configs on console",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8765/hr-worker/api/workers/configs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-worker",
+								"api",
+								"workers",
+								"configs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8765/hr-worker/actuator/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-worker",
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hr-user",
+			"item": [
+				{
+					"name": "User by email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnbEVGdjc1bURvM0ZLTnQzeDhQRE5uSlZUc1l2MmFqWDZ1cTBmcWVfVXVNIn0.eyJleHAiOjE3MTY4OTczMTEsImlhdCI6MTcxNjg5NzAxMSwianRpIjoiYjdlZmRhZjUtOWI1OS00ZDI1LTliOTMtMGFkMjAyOTI3NjE1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkwL3JlYWxtcy9tcy1jb3Vyc2UiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiYjMxMDIzZDAtYWZhNS00ZGViLTljMGItMmRlYTdjNDhiZTc5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tcmVzdC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiZWM4ZWZlNDItMzAwZi00ZDQzLWJkMzctMDFhYTliZTRhYjM5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0Ojg3NjUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXMtY291cnNlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsidmlldy11c2VycyIsInF1ZXJ5LWdyb3VwcyIsInF1ZXJ5LXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJlYzhlZmU0Mi0zMDBmLTRkNDMtYmQzNy0wMWFhOWJlNGFiMzkiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJHdWVzdCBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ3Vlc3QiLCJnaXZlbl9uYW1lIjoiR3Vlc3QiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Imd1ZXN0QGdtYWlsLmNvbSJ9.VQAeA0kqcYkufl14RJ76pawHvfKX5obwphXWi6j0b11vz8Kf0IVb5ygIr7QPbSOhm4HSAtr7wdBnzROkRlZaboLEgTMvCyy5xmq6ggzN3EsNjD8wUUFhxzI9y6_YXvZmnjTGg7y8Zs-QF5QCOiKVrln4rhNf2iqQgXyPbuMy83l1icYJzgGj3pllg6F6jAAvSf6fa2NQOymU7sDx5ZqLN3lU8Aby8U7pbcJqoMVQzEUHBxijQqoU_bhJkHS2fUv_E6K1TV0KCcgSahV5nO5uToSWwzMtA_YVtiEd_WeWrFVrHZjs-7KxaIeRPAewLgqr_ks5dL2vdardfzv06MBJKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"teste\",\n        \"email\": \"teste@teste.com\",\n        \"password\": \"123456\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/hr-user/api/users/search?email=nina@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-user",
+								"api",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nina@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnbEVGdjc1bURvM0ZLTnQzeDhQRE5uSlZUc1l2MmFqWDZ1cTBmcWVfVXVNIn0.eyJleHAiOjE3MTY4OTczMTEsImlhdCI6MTcxNjg5NzAxMSwianRpIjoiYjdlZmRhZjUtOWI1OS00ZDI1LTliOTMtMGFkMjAyOTI3NjE1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkwL3JlYWxtcy9tcy1jb3Vyc2UiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiYjMxMDIzZDAtYWZhNS00ZGViLTljMGItMmRlYTdjNDhiZTc5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tcmVzdC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiZWM4ZWZlNDItMzAwZi00ZDQzLWJkMzctMDFhYTliZTRhYjM5IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0Ojg3NjUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXMtY291cnNlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsidmlldy11c2VycyIsInF1ZXJ5LWdyb3VwcyIsInF1ZXJ5LXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJlYzhlZmU0Mi0zMDBmLTRkNDMtYmQzNy0wMWFhOWJlNGFiMzkiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJHdWVzdCBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ3Vlc3QiLCJnaXZlbl9uYW1lIjoiR3Vlc3QiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Imd1ZXN0QGdtYWlsLmNvbSJ9.VQAeA0kqcYkufl14RJ76pawHvfKX5obwphXWi6j0b11vz8Kf0IVb5ygIr7QPbSOhm4HSAtr7wdBnzROkRlZaboLEgTMvCyy5xmq6ggzN3EsNjD8wUUFhxzI9y6_YXvZmnjTGg7y8Zs-QF5QCOiKVrln4rhNf2iqQgXyPbuMy83l1icYJzgGj3pllg6F6jAAvSf6fa2NQOymU7sDx5ZqLN3lU8Aby8U7pbcJqoMVQzEUHBxijQqoU_bhJkHS2fUv_E6K1TV0KCcgSahV5nO5uToSWwzMtA_YVtiEd_WeWrFVrHZjs-7KxaIeRPAewLgqr_ks5dL2vdardfzv06MBJKw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"teste\",\n        \"email\": \"teste@teste.com\",\n        \"password\": \"123456\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/hr-user/api/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-user",
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnbEVGdjc1bURvM0ZLTnQzeDhQRE5uSlZUc1l2MmFqWDZ1cTBmcWVfVXVNIn0.eyJleHAiOjE3MTY4OTY5MDksImlhdCI6MTcxNjg5NjYwOSwianRpIjoiYjMyNDI3ZDAtODJkYi00M2U2LWE1YTktZmE1Zjc2MTczMzE1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkwL3JlYWxtcy9tcy1jb3Vyc2UiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiYjMxMDIzZDAtYWZhNS00ZGViLTljMGItMmRlYTdjNDhiZTc5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tcmVzdC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiOThhZWFiNmItZTA3NC00ZDg2LTgyYjgtZDczMmJhNmYxMjk0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0Ojg3NjUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXMtY291cnNlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsidmlldy11c2VycyIsInF1ZXJ5LWdyb3VwcyIsInF1ZXJ5LXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5OGFlYWI2Yi1lMDc0LTRkODYtODJiOC1kNzMyYmE2ZjEyOTQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJHdWVzdCBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ3Vlc3QiLCJnaXZlbl9uYW1lIjoiR3Vlc3QiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Imd1ZXN0QGdtYWlsLmNvbSJ9.KAlIyzLBRctQAyoPSRCrn9RGQR_JGybNuLYi7YLUHurL29Vlq9cLSkZNNUc-Tjuouu-fx0hrVhK68ENQI9c5BFnBb1HD03_t5lXkU9gIj_ivGwT79GuW-8yeYwvksQtgLpecBRf_E066cdT5P0XyB0W2EQ-25RdEK03JU49BBjd4aixE3AKxxid7-SOm9q2a6osx_cO4ftYvVhAzRN6CV1DFfqzKqMWFj05BE7n4JVfQx6JunFGHxO3JksPN6lbBJgVi7jiYHJXUdADO8POn17uO_H-6osfigXcU_-Wtqnyz4zIBLDUP_dYkxybVhqLwQIlSm5aKtnKUyfplUyuc-g",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:9090/realms/ms-course/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "admin-rest-client",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "admin-rest-client",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://localhost:8765/oauth2/authorize",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"teste\",\n        \"email\": \"teste@teste.com\",\n        \"password\": \"123456\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8765/hr-user/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8765",
+							"path": [
+								"hr-user",
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Keycloak",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnbEVGdjc1bURvM0ZLTnQzeDhQRE5uSlZUc1l2MmFqWDZ1cTBmcWVfVXVNIn0.eyJleHAiOjE3MTY4OTY5MDksImlhdCI6MTcxNjg5NjYwOSwianRpIjoiYjMyNDI3ZDAtODJkYi00M2U2LWE1YTktZmE1Zjc2MTczMzE1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkwL3JlYWxtcy9tcy1jb3Vyc2UiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiYjMxMDIzZDAtYWZhNS00ZGViLTljMGItMmRlYTdjNDhiZTc5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tcmVzdC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiOThhZWFiNmItZTA3NC00ZDg2LTgyYjgtZDczMmJhNmYxMjk0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0Ojg3NjUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXMtY291cnNlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsidmlldy11c2VycyIsInF1ZXJ5LWdyb3VwcyIsInF1ZXJ5LXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5OGFlYWI2Yi1lMDc0LTRkODYtODJiOC1kNzMyYmE2ZjEyOTQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJHdWVzdCBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ3Vlc3QiLCJnaXZlbl9uYW1lIjoiR3Vlc3QiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Imd1ZXN0QGdtYWlsLmNvbSJ9.KAlIyzLBRctQAyoPSRCrn9RGQR_JGybNuLYi7YLUHurL29Vlq9cLSkZNNUc-Tjuouu-fx0hrVhK68ENQI9c5BFnBb1HD03_t5lXkU9gIj_ivGwT79GuW-8yeYwvksQtgLpecBRf_E066cdT5P0XyB0W2EQ-25RdEK03JU49BBjd4aixE3AKxxid7-SOm9q2a6osx_cO4ftYvVhAzRN6CV1DFfqzKqMWFj05BE7n4JVfQx6JunFGHxO3JksPN6lbBJgVi7jiYHJXUdADO8POn17uO_H-6osfigXcU_-Wtqnyz4zIBLDUP_dYkxybVhqLwQIlSm5aKtnKUyfplUyuc-g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/admin/realms/ms-course/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"admin",
+								"realms",
+								"ms-course",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "admin-rest-client",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "7pdk5UkU4DdfvCZZ0oVw9qXXRHG5dXx5",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "guest",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9090/realms/ms-course/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"realms",
+								"ms-course",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnbEVGdjc1bURvM0ZLTnQzeDhQRE5uSlZUc1l2MmFqWDZ1cTBmcWVfVXVNIn0.eyJleHAiOjE3MTM5ODU5NDgsImlhdCI6MTcxMzk4NTY0OCwianRpIjoiNzFiMWEyZWEtMzUwOS00YjY3LWExOTktM2FhOGNjZWZlN2ViIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9tcy1jb3Vyc2UiLCJhdWQiOlsicmVhbG0tbWFuYWdlbWVudCIsImFjY291bnQiXSwic3ViIjoiYjMxMDIzZDAtYWZhNS00ZGViLTljMGItMmRlYTdjNDhiZTc5IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYWRtaW4tcmVzdC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiZTY4NzMyMjYtZjMyZS00YmU3LThhYTMtMmU3ZDhmMWFlZjUwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0Ojg3NjUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXMtY291cnNlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsidmlldy11c2VycyIsInF1ZXJ5LWdyb3VwcyIsInF1ZXJ5LXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJlNjg3MzIyNi1mMzJlLTRiZTctOGFhMy0yZTdkOGYxYWVmNTAiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJHdWVzdCBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ3Vlc3QiLCJnaXZlbl9uYW1lIjoiR3Vlc3QiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Imd1ZXN0QGdtYWlsLmNvbSJ9.LnfV7ORUJf8u6lK35VNCL2iR8URqFmUEYG4G7qflih3BWTJnc2jRr_9vcYSwAfHvSoBiS0-DUWaeKR1_nhFWbM0LaaONVPg9maOIS8iVuXO1dsvvz_ZhZFpC9fHnFCik_C_QjmeSZwTLRmgVUQHSHJ5M5aM8FKCcu0uhhgab_OYWJMwWCH22BF_KOiEm8XbBJ_DoZzhGJKfKF4y70o59wktGkLFo_PCdCgdQi1sINo4LwrUgFqcgn2tIulB12m441gFZpNirOaWeZhDGXySsQc_cG1_zpbHg49sE0TG0WHTZVVBpQz_q2Njca7zW6Nyz33Dvdwj6K8Th5qdudB6IXQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/admin/realms/ms-course/identity-provider/instances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"admin",
+								"realms",
+								"ms-course",
+								"identity-provider",
+								"instances"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
